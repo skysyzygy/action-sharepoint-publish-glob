@@ -38,12 +38,13 @@ runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    SITE_URL : ${{ inputs.site_url }}
-    CLIENTID : ${{ inputs.sharepoint_client_id }}
+    SITE_URL: ${{ inputs.site_url }}
+    CLIENTID: ${{ inputs.sharepoint_client_id }}
     CLIENTSECRET: ${{ inputs.sharepoint_client_secret }}
-    USERNAME : ${{ inputs.sharepoint_username }}
+    USERNAME: ${{ inputs.sharepoint_username }}
     PASSWORD: ${{ inputs.sharepoint_password }}
-    LIB_FOLDER : ${{ inputs.library_folder }}
+    LIB_FOLDER: ${{ inputs.library_folder }}
     GLOB: ${{ inputs.glob }}
     BASE: ${{ inputs.base }}
-    FILE_PATH : ${{ inputs.file_path }}
+    FILE_PATH: ${{ inputs.file_path }}
+
