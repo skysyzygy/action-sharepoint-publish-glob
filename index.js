@@ -1,8 +1,8 @@
 const spsave = require("spsave").spsave;
 const fs = require("fs");
 
-const filePath = process.env.FILE_PATH
-const glob = process.env.GLOB
+const filePath = process.env.INPUT_FILE_PATH
+const glob = process.env.INPUT_GLOB
 const fileExtensionArr = filePath.split('.')
 const fileExtension = `.${fileExtensionArr[fileExtensionArr.length - 1]}`
 const sha = process.env.GITHUB_SHA.substring(0, 7)
@@ -12,34 +12,34 @@ const trimSlashes = (string) => {
 }
 
 let creds = {}
-if (process.env.CLIENTID != undefined) {
+if (process.env.INPUT_CLIENTID != undefined) {
   creds = {
-      clientId: process.env.CLIENTID,
-      clientSecret: process.env.CLIENTSECRET,
+      clientId: process.env.INPUT_CLIENTID,
+      clientSecret: process.env.INPUT_CLIENTSECRET,
   }
 } else {
   creds = {
-      username: process.env.USERNAME,
-      password: process.env.PASSWORD,
+      username: process.env.INPUT_USERNAME,
+      password: process.env.INPUT_PASSWORD,
   }
 }
 
 let coreOptions = {
-    siteUrl: process.env.SITE_URL,
+    siteUrl: process.env.INPUT_SITE_URL,
 }
 
 let fileOptions = {}
 if (process.env.filePath != undefined) {
   fileOptions = {
-      folder: process.env.LIB_FOLDER,
+      folder: process.env.INPUT_LIB_FOLDER,
       fileName: `${trimSlashes(process.env.GITHUB_REPOSITORY)}_${sha}_${fileExtension}`,
       fileContent: fs.readFileSync(filePath),
   }
 } else {
   fileOptions = {
-      folder: process.env.LIB_FOLDER,
-      glob: process.env.GLOB,
-      base: process.env.BASE,
+      folder: process.env.INPUT_LIB_FOLDER,
+      glob: process.env.INPUT_GLOB,
+      base: process.env.INPUT_BASE,
   }
 }
 
