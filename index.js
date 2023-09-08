@@ -12,7 +12,7 @@ const trimSlashes = (string) => {
 }
 
 let creds = {}
-if (process.env.INPUT_CLIENTID != undefined) {
+if (process.env.INPUT_CLIENTID != "") {
   creds = {
       clientId: process.env.INPUT_CLIENTID,
       clientSecret: process.env.INPUT_CLIENTSECRET,
@@ -29,7 +29,7 @@ let coreOptions = {
 }
 
 let fileOptions = {}
-if (process.env.filePath != undefined) {
+if (filePath != "") {
   fileOptions = {
       folder: process.env.INPUT_LIB_FOLDER,
       fileName: `${trimSlashes(process.env.GITHUB_REPOSITORY)}_${sha}_${fileExtension}`,
