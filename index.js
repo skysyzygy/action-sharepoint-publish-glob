@@ -14,23 +14,23 @@ const trimSlashes = (string) => {
 console.log("Starting node...")
 
 let creds = {}
-if (process.env.INPUT_CLIENTID != "") {
+if (process.env.INPUT_SHAREPOINT_CLIENT_ID != "") {
   creds = {
-      clientId: process.env.INPUT_CLIENTID,
-      clientSecret: process.env.INPUT_CLIENTSECRET,
+      clientId: process.env.INPUT_SHAREPOINT_CLIENT_ID,
+      clientSecret: process.env.INPUT_SHAREPOINT_CLIENT_SECRET,
   }
 } else {
   creds = {
-      username: process.env.INPUT_USERNAME,
-      password: process.env.INPUT_PASSWORD,
+      username: process.env.INPUT_SHAREPOINT_USERNAME,
+      password: process.env.INPUT_SHAREPOINT_PASSWORD,
   }
 }
-console.log(creds)
+console.log("creds:",creds)
 
 let coreOptions = {
     siteUrl: process.env.INPUT_SITE_URL,
 }
-console.log(coreOptions)
+console.log("coreOptions:",coreOptions)
 
 let fileOptions = {}
 if (filePath != "") {
@@ -46,7 +46,7 @@ if (filePath != "") {
       base: process.env.INPUT_BASE,
   }
 }
-console.log(fileOptions)
+console.log("fileOptions:",fileOptions)
 
 spsave(coreOptions, creds, fileOptions)
     .then(() => {
