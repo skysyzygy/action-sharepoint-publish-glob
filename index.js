@@ -25,6 +25,7 @@ if (process.env.INPUT_CLIENTID != "") {
       password: process.env.INPUT_PASSWORD,
   }
 }
+console.log(creds)
 
 let coreOptions = {
     siteUrl: process.env.INPUT_SITE_URL,
