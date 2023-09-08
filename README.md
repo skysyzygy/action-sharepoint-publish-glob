@@ -1,4 +1,4 @@
-# action-sharepoint-publish
+# action-sharepoint-publish-glob
 
 A simple Github Action that create an archive of a repository and upload it to a Sharepoint library
 
@@ -25,10 +25,14 @@ A simple Github Action that create an archive of a repository and upload it to a
     required: true
     default: "Shared documents"
   glob:
-    description: "Filenames to upload to SharePoint. string or string array, i.e. 'build/css/style.css' or ['build/css/*.*']."
+    description: "Filenames to upload to SharePoint. string or string array, 
+      i.e. 'build/css/style.css' or ['build/css/*.*']."
     required: false
   base:
-    descciption: "Base directory, if you want to preserve folders structure inside SharePoint folder, you can provide a base for you files. For example when using glob ['build/css/*.*'] and base: 'build', all css files will be loaded under [SharePoint folder]/css"
+    description: "Base directory, if you want to preserve folders structure 
+      inside SharePoint folder, you can provide a base for you files. For example 
+      when using glob ['build/css/*.*'] and base: 'build', all css files will 
+      be loaded under [SharePoint folder]/css"
     required: false
   file_path:
     description: 'To upload a specific file instead of the whole repo, specify the path here'
