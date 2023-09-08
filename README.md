@@ -4,7 +4,7 @@ A simple Github Action that create an archive of a repository and upload it to a
 
 ## Inputs
 
-```
+```yml
   site_url:
     description: 'The Sharepoint site url'
     required: true
