@@ -1,25 +1,37 @@
 # action.yml
 name: 'Publish to Sharepoint'
-description: 'Create a archive of the repository and upload it to a Sharepoint online via client id and secret'
-author: 'Olivier Brassard & Daniel Monaghan'
+description: 'Upload a file or tree to Sharepoint online'
+author: 'Olivier Brassard, Daniel Monaghan, and Sky Syzygy'
 branding:
-  icon: 'upload-cloud'  
-  color: 'green'
+  icon: 'upload-cloud'
+  color: 'pink'
 inputs:
-  site_url: 
+  site_url:
     description: 'The Sharepoint site url'
     required: true
-  sharepoint_client_id: 
+  sharepoint_client_id:
     description: 'Client ID to use for authentication'
-    required: true
-  sharepoint_client_secret: 
+    required: false
+  sharepoint_client_secret:
     description: 'Client Secret to use for authentication'
-    required: true
-  library_folder: 
-    description: 'The path where to upload the archive in the library'
+    required: false
+  sharepoint_username:
+    description: 'Username to use for authentication'
+    required: false
+  sharepoint_password:
+    description: 'Password to use for authentication'
+    required: false
+  library_folder:
+    description: 'The path where to upload the files in the library'
     required: true
     default: "Shared documents"
-  file_path: 
+  glob:
+    description: "Filenames to upload to SharePoint. string or string array, i.e. 'build/css/style.css' or ['build/css/*.*']."
+    required: false
+  base:
+    descciption: "Base directory, if you want to preserve folders structure inside SharePoint folder, you can provide a base for you files. For example when using glob ['build/css/*.*'] and base: 'build', all css files will be loaded under [SharePoint folder]/css"
+    required: false
+  file_path:
     description: 'To upload a specific file instead of the whole repo, specify the path here'
     required: false
 runs:
@@ -29,5 +41,9 @@ runs:
     SITE_URL : ${{ inputs.site_url }}
     CLIENTID : ${{ inputs.sharepoint_client_id }}
     CLIENTSECRET: ${{ inputs.sharepoint_client_secret }}
+    USERNAME : ${{ inputs.sharepoint_username }}
+    PASSWORD: ${{ inputs.sharepoint_password }}
     LIB_FOLDER : ${{ inputs.library_folder }}
+    GLOB: %{{ inputs.glob }}
+    BASE: %{{ inputs.base }}
     FILE_PATH : ${{ inputs.file_path }}

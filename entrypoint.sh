@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 # if the FILE_PATH exists then we will just be uploading the file
-if [[ -z $FILE_PATH ]]
+if [[ -z $FILE_PATH && -z $GLOB ]]
 then
     export FILE_PATH="/out/repoarchive.zip"
     mkdir /out
