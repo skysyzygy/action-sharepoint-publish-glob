@@ -34,13 +34,13 @@ console.log(coreOptions)
 let fileOptions = {}
 if (filePath != "") {
   fileOptions = {
-      folder: process.env.INPUT_LIB_FOLDER,
+      folder: process.env.INPUT_LIBRARY_FOLDER,
       fileName: `${trimSlashes(process.env.GITHUB_REPOSITORY)}_${sha}_${fileExtension}`,
       fileContent: fs.readFileSync(filePath),
   }
 } else {
   fileOptions = {
-      folder: process.env.INPUT_LIB_FOLDER,
+      folder: process.env.INPUT_LIBRARY_FOLDER,
       glob: process.env.INPUT_GLOB,
       base: process.env.INPUT_BASE,
   }
@@ -52,5 +52,6 @@ spsave(coreOptions, creds, fileOptions)
         console.log('Success')
     })
     .catch((_) => {
+        console.log(_)
         process.exit(1)
     })
