@@ -11,6 +11,8 @@ const trimSlashes = (string) => {
     return string.replace(new RegExp('/', 'g'), '_')
 }
 
+console.log("Starting node...")
+
 let creds = {}
 if (process.env.INPUT_CLIENTID != "") {
   creds = {
@@ -27,6 +29,7 @@ if (process.env.INPUT_CLIENTID != "") {
 let coreOptions = {
     siteUrl: process.env.INPUT_SITE_URL,
 }
+console.log(coreOptions)
 
 let fileOptions = {}
 if (filePath != "") {
@@ -42,6 +45,7 @@ if (filePath != "") {
       base: process.env.INPUT_BASE,
   }
 }
+console.log(fileOptions)
 
 spsave(coreOptions, creds, fileOptions)
     .then(() => {
