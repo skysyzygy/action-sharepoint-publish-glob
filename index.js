@@ -11,13 +11,14 @@ const trimSlashes = (string) => {
     return string.replace(new RegExp('/', 'g'), '_')
 }
 
+let creds = {}
 if (process.env.CLIENTID != undefined) {
-  let creds = {
+  creds = {
       clientId: process.env.CLIENTID,
       clientSecret: process.env.CLIENTSECRET,
   }
 } else {
-  let creds = {
+  creds = {
       username: process.env.USERNAME,
       password: process.env.PASSWORD,
   }
@@ -27,14 +28,15 @@ let coreOptions = {
     siteUrl: process.env.SITE_URL,
 }
 
+let fileOptions = {}
 if (process.env.filePath != undefined) {
-  let fileOptions = {
+  fileOptions = {
       folder: process.env.LIB_FOLDER,
       fileName: `${trimSlashes(process.env.GITHUB_REPOSITORY)}_${sha}_${fileExtension}`,
       fileContent: fs.readFileSync(filePath),
   }
 } else {
-  let fileOptions = {
+  fileOptions = {
       folder: process.env.LIB_FOLDER,
       glob: process.env.GLOB,
       base: process.env.BASE,
